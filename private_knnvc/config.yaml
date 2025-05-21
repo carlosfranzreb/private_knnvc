@@ -1,0 +1,41 @@
+sample_rate: 16000
+batch_size: 2
+
+featex: # feature extraction module; components receive the output of torchaudio.load as input.
+  wavlm:
+    cls: spkanon_eval.featex.wavlm.wrapper.WavlmWrapper
+    ckpt: checkpoints/WavLM-Large.pt
+    layer:
+      - 6
+      - 24
+    hop_length: 320
+
+featproc: # feature processing module
+  knnvc:
+    cls: private_knnvc.converter.Converter
+    converter_params: ${converter_params}
+    wavlm: ${featex.wavlm}
+    wavlm_dl: ${data.config}
+    exp_folder: ${exp_folder}
+    input:
+      feats: feats
+      n_feats: n_feats
+      source: source
+      source_is_male: source_is_male
+  output: # what is passed to the next module
+    featproc:
+      - wavlm
+      - target
+      - n_feats
+    featex: [] # non-processed features, from the featex config group
+
+synthesis: # speech synthesis; receives featfusion's output as input
+  cls: spkanon_models.knnvc.hifigan_wrapper.Hifigan
+  ckpt: checkpoints/knnvc/hifigan.pt
+  config: checkpoints/knnvc/hifigan.json
+  hop_length: ${featex.wavlm.hop_length}
+  sample_rate: ${sample_rate}
+  enhance: ${enhance_audio}
+  input:
+    wavlm: wavlm
+    n_feats: n_feats

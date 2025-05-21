@@ -1,0 +1,8 @@
+__pycache__
+checkpoints*
+target_feats
+samples
+*.mp3
+*.DS_Store
+*.zip
+vpc_results*ipynb
