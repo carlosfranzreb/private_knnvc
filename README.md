@@ -4,7 +4,7 @@ Here are the relevant resources for our submission. They include samples of anon
 
 ## Samples
 
-In the ZIP file called "samples.zip" you will find anonymized samples for different configurations of our model. Folders are named by the model configuration: The file names consist of the source file and target speaker, combined with underscores.
+In the released ZIP file called "samples.zip" you will find anonymized samples for different configurations of our model. Folders are named by the model configuration: The file names consist of the source file and target speaker, combined with underscores.
 
 We have used four target speakers, whose WavLM features you can find in "target_feats.zip". The four speakers are named by their indices, and correspond to the following LibriTTS speakers:
 
@@ -19,13 +19,9 @@ We have developed a self-contained version of the model as a demo. Run the noteb
 We provide all model weights as a release in this repository.
 You can also find the code for training the phone and duration predictors in the folder "train_predictors".
 
-## VPC 2024 results
-
-In the ZIP file "vpc_results.zip" you will find the VPC 2024 results of our experiments. We have also summarized the most important results in the CSV file called "vpc_results.csv".
-
-These results were used to create the figures for the paper with the notebook "vpc_results.ipynb". It is not very informative, we include it only for reproducibility purposes. You may need to install some Python packages for it to run.´
-
 ## How to reproduce our experiments
+
+We have summarized the most important results in the CSV file called "vpc_results.csv".
 
 The model is implemented to work with the [SpAnE framework](https://github.com/carlosfranzreb/spkanon_eval). All datasets required by the VPC evaluation are anonymized with SpAnE. Then, the datafiles for the VPC 2024 evaluation are created and the evaluation is run.
 
@@ -46,9 +42,7 @@ Now, to add the code of private kNN-VC to SpAnE, place the folder `private_knnvc
 
 ### 3. Download the model checkpoints
 
-The model checkpoints are all zipped together in `checkpoints.zip`. Unzip them at the same level as `private_knnvc`.
-
-After the first three steps, the structure should be like follows:
+The model checkpoints are all zipped together in the released `checkpoints.zip` file. Unzip them at the same level as `private_knnvc`. The structure should be like follows:
 
 ```bash
 spkanon_eval/       # root directory
