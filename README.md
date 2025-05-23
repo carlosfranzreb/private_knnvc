@@ -4,7 +4,9 @@ Here are the relevant resources for our submission. They include samples of anon
 
 ## Samples
 
-In the released ZIP file called "samples.zip" you will find anonymized samples for different configurations of our model. Folders are named by the model configuration: The file names consist of the source file and target speaker, combined with underscores.
+You can listen to some samples [here](https://carlosfranzreb.github.io/2025/05/23/private-knnvc.html).
+
+You can also download the samples, which can be found in the released ZIP file called "samples.zip". Folders are named by the model configuration: The file names consist of the source file and target speaker, combined with underscores.
 
 We have used four target speakers, whose WavLM features you can find in "target_feats.zip". The four speakers are named by their indices, and correspond to the following LibriTTS speakers:
 
