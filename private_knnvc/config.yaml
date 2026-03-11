@@ -13,7 +13,13 @@ featex: # feature extraction module; components receive the output of torchaudio
 featproc: # feature processing module
   knnvc:
     cls: private_knnvc.converter.Converter
-    converter_params: ${converter_params}
+    converter_params:
+      target_feats: null
+      duration_prediction_weight: 0.7
+      n_phone_clusters: 8
+      phone_predictor_ckpt: checkpoints/phone_decoder.pt
+      duration_predictor_ckpt: checkpoints/duration_decoder.pt
+      phone_lexicon: private_knnvc/phone_lexicon.txt
     wavlm: ${featex.wavlm}
     wavlm_dl: ${data.config}
     exp_folder: ${exp_folder}
